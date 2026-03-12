@@ -9,7 +9,8 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: Arial, sans-serif;
+      font-family:Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html{
@@ -17,15 +18,22 @@
     }
 
     body{
-      background:#eef4f9;
+      background:linear-gradient(180deg,#eef6fc 0%, #f9fcff 100%);
       color:#243746;
       line-height:1.6;
       overflow-x:hidden;
+      user-select:none;
+      -webkit-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
     }
 
     img{
       max-width:100%;
       display:block;
+      pointer-events:none;
+      -webkit-user-drag:none;
+      user-drag:none;
     }
 
     a{
@@ -33,7 +41,7 @@
     }
 
     .container{
-      width:min(1200px, 92%);
+      width:min(1200px,92%);
       margin:auto;
     }
 
@@ -41,7 +49,8 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background:#ffffff;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
       border-bottom:1px solid #dbe7f0;
       box-shadow:0 4px 14px rgba(0,0,0,0.06);
     }
@@ -50,8 +59,8 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:16px 0;
       gap:20px;
+      padding:16px 0;
     }
 
     .logo{
@@ -83,142 +92,176 @@
 
     .menu-btn{
       display:none;
-      background:none;
       border:none;
+      background:none;
       font-size:30px;
       color:#0d6efd;
       cursor:pointer;
     }
 
     .hero{
-      padding:48px 0 34px;
+      padding:42px 0 24px;
     }
 
     .hero-box{
-      background:linear-gradient(135deg, #106fb2, #0f6cae 60%, #1e7dbf);
-      border-radius:28px;
+      background:linear-gradient(135deg,#0d6fb4 0%, #0a77c6 50%, #0f6cad 100%);
+      border-radius:32px;
+      box-shadow:0 20px 40px rgba(13,111,180,0.22);
       padding:48px;
       display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:30px;
+      grid-template-columns:1.15fr 0.85fr;
       align-items:center;
+      gap:30px;
       color:#fff;
-      box-shadow:0 16px 30px rgba(16,111,178,0.22);
+      overflow:hidden;
     }
 
     .hero-content h1{
       font-size:48px;
       line-height:1.15;
-      margin-bottom:12px;
+      margin-bottom:14px;
       font-weight:800;
     }
 
     .hero-content p{
+      color:#eaf5ff;
       font-size:19px;
-      color:#e9f5ff;
       margin-bottom:22px;
       max-width:650px;
     }
 
-    .search-bar{
-      background:#fff;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 18px;
-      height:64px;
+    .search-box{
+      position:relative;
+      margin-bottom:24px;
       max-width:760px;
-      margin-bottom:20px;
-      box-shadow:0 10px 18px rgba(0,0,0,0.1);
     }
 
-    .search-bar input{
+    .search-input{
+      width:100%;
+      height:72px;
       border:none;
       outline:none;
-      width:100%;
-      font-size:26px;
-      color:#56616d;
-      background:transparent;
+      border-radius:22px;
+      padding:0 70px 0 28px;
+      font-size:24px;
+      color:#536170;
+      box-shadow:0 10px 18px rgba(0,0,0,0.12);
     }
 
     .search-icon{
-      font-size:30px;
-      color:#4d5a68;
-      font-weight:bold;
+      position:absolute;
+      right:24px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:32px;
+      color:#536170;
+      pointer-events:none;
+    }
+
+    .brand-select{
+      width:100%;
+      max-width:760px;
+      margin-top:12px;
+      height:56px;
+      border:none;
+      outline:none;
+      border-radius:16px;
+      padding:0 18px;
+      font-size:18px;
+      color:#355064;
+      background:#ffffff;
+      box-shadow:0 8px 16px rgba(0,0,0,0.12);
     }
 
     .hero-note{
-      font-size:18px;
-      font-weight:700;
-      margin:8px 0 18px;
+      margin:24px 0 18px;
+      font-size:20px;
+      font-weight:800;
     }
 
     .brand-mini-grid{
       display:grid;
-      grid-template-columns:repeat(6, 92px);
-      gap:16px;
-      margin-bottom:18px;
-      align-items:center;
+      grid-template-columns:repeat(6,1fr);
+      gap:18px;
+      margin-bottom:22px;
+      max-width:960px;
     }
 
     .brand-mini-card{
-      width:92px;
-      height:92px;
       background:#fff;
-      border-radius:18px;
+      border-radius:22px;
+      min-height:138px;
+      padding:14px 10px;
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
-      box-shadow:0 8px 18px rgba(0,0,0,0.12);
-      overflow:hidden;
+      box-shadow:0 10px 18px rgba(0,0,0,0.12);
+      text-align:center;
+      transition:0.3s ease;
+    }
+
+    .brand-mini-card:hover{
+      transform:translateY(-4px);
     }
 
     .brand-mini-card img{
-      width:60px;
-      height:60px;
+      width:58px;
+      height:58px;
       object-fit:contain;
+      margin-bottom:10px;
+    }
+
+    .brand-mini-card span{
+      font-size:16px;
+      font-weight:800;
+      color:#156eb1;
+      line-height:1.25;
     }
 
     .more-brands-btn{
       display:inline-block;
       background:#fff;
-      color:#106fb2;
+      color:#156eb1;
       font-size:20px;
-      font-weight:700;
-      padding:16px 30px;
-      border-radius:18px;
-      min-width:300px;
+      font-weight:800;
+      padding:18px 34px;
+      border-radius:20px;
+      min-width:280px;
       text-align:center;
-      box-shadow:0 8px 18px rgba(0,0,0,0.12);
+      box-shadow:0 10px 18px rgba(0,0,0,0.12);
+      transition:0.3s ease;
+    }
+
+    .more-brands-btn:hover{
+      transform:translateY(-4px);
     }
 
     .hero-image img{
       width:100%;
       max-height:470px;
       object-fit:contain;
-      margin:auto;
-      filter:drop-shadow(0 14px 22px rgba(0,0,0,0.18));
-      border-radius:18px;
+      border-radius:20px;
+      filter:drop-shadow(0 14px 24px rgba(0,0,0,0.2));
     }
 
     section{
-      padding:58px 0;
+      padding:56px 0;
     }
 
     .section-title{
       text-align:center;
-      font-size:52px;
-      font-weight:800;
+      font-size:50px;
       color:#2d3b47;
+      font-weight:800;
       margin-bottom:10px;
     }
 
     .section-subtitle{
       text-align:center;
-      font-size:19px;
       color:#156eb1;
-      margin-bottom:36px;
+      font-size:19px;
+      margin-bottom:34px;
     }
 
     .card-grid{
@@ -227,15 +270,15 @@
     }
 
     .brand-grid{
-      grid-template-columns:repeat(6, 1fr);
+      grid-template-columns:repeat(6,1fr);
     }
 
     .service-grid{
-      grid-template-columns:repeat(6, 1fr);
+      grid-template-columns:repeat(6,1fr);
     }
 
     .repair-grid{
-      grid-template-columns:repeat(3, 1fr);
+      grid-template-columns:repeat(3,1fr);
     }
 
     .brand-card,
@@ -244,117 +287,146 @@
     .why-card,
     .testimonial-card,
     .faq-item,
-    .contact-card{
+    .contact-card,
+    .process-box{
       background:#fff;
-      border-radius:22px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.11);
+      border-radius:24px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.09);
     }
 
     .brand-card{
-      padding:24px;
-      text-align:center;
       min-height:190px;
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
+      padding:20px;
+      text-align:center;
+      transition:0.3s ease;
+    }
+
+    .brand-card:hover{
+      transform:translateY(-5px);
     }
 
     .brand-card img{
-      width:100px;
-      height:100px;
+      width:90px;
+      height:90px;
       object-fit:contain;
+      margin-bottom:12px;
+    }
+
+    .brand-card span{
+      font-weight:800;
+      color:#2f4250;
+      font-size:18px;
     }
 
     .service-card{
-      padding:20px 14px;
+      min-height:240px;
+      padding:18px 14px;
       text-align:center;
-      min-height:220px;
+      transition:0.3s ease;
+      cursor:default;
+    }
+
+    .service-card:hover{
+      transform:translateY(-6px) scale(1.02);
+      box-shadow:0 16px 28px rgba(0,0,0,0.14);
     }
 
     .service-card img{
-      width:120px;
+      width:118px;
       height:95px;
       object-fit:cover;
-      margin:0 auto 14px;
       border-radius:14px;
+      margin:0 auto 14px;
     }
 
     .service-card h3{
       font-size:18px;
+      color:#374652;
       line-height:1.35;
-      color:#384652;
     }
 
     .repair-card{
       padding:24px;
       text-align:center;
+      transition:0.3s ease;
+    }
+
+    .repair-card:hover{
+      transform:translateY(-5px);
     }
 
     .repair-card h3{
-      font-size:26px;
+      font-size:24px;
+      margin-bottom:8px;
       color:#2f3f4c;
-      margin-bottom:10px;
     }
 
     .repair-card p{
       font-size:18px;
-      color:#4b5966;
+      color:#51606d;
       margin-bottom:18px;
     }
 
     .before-after{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:10px;
+      gap:16px;
     }
 
-    .before-after div{
+    .before-after-box{
       text-align:center;
     }
 
-    .before-after img{
+    .before-after-box img{
       width:100%;
-      height:190px;
+      height:220px;
       object-fit:cover;
       border-radius:16px;
-      margin-bottom:8px;
+      margin-bottom:10px;
+      border:2px solid #d8e8f5;
+      background:#eef6fc;
+    }
+
+    .before-after-box strong{
+      color:#2f3f4c;
+      font-size:18px;
     }
 
     .process-box{
-      background:#fff;
-      border-radius:28px;
       padding:34px;
-      box-shadow:0 8px 22px rgba(0,0,0,0.1);
     }
 
-    .process-toggle{
+    .process-tabs{
       max-width:760px;
-      margin:0 auto 26px;
-      background:#54c2a0;
+      margin:0 auto 30px;
+      background:#51c4a2;
       border-radius:999px;
       display:flex;
       overflow:hidden;
     }
 
-    .process-toggle div{
+    .process-tab{
       flex:1;
       text-align:center;
       padding:16px 12px;
       color:#fff;
       font-size:20px;
-      font-weight:700;
+      font-weight:800;
     }
 
-    .process-toggle .active{
+    .process-tab.active{
       background:#156eb1;
       position:relative;
     }
 
-    .process-toggle .active::before{
+    .process-tab.active::before{
       content:"Recommended";
       position:absolute;
-      left:14px;
+      left:12px;
       top:10px;
       background:#ff9800;
       color:#fff;
@@ -367,41 +439,95 @@
     .steps{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:20px;
-      margin-bottom:24px;
+      gap:20px;
+      align-items:start;
+      margin:28px 0 24px;
+      position:relative;
+    }
+
+    .steps::before{
+      content:"";
+      position:absolute;
+      top:30px;
+      left:16%;
+      width:68%;
+      height:8px;
+      background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 33%, #d9d9d9 33%, #d9d9d9 100%);
+      border-radius:999px;
+      z-index:0;
+      animation:processLine 4.5s infinite ease-in-out;
+    }
+
+    @keyframes processLine{
+      0%{
+        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 33%, #d9d9d9 33%, #d9d9d9 100%);
+      }
+      33%{
+        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 66%, #d9d9d9 66%, #d9d9d9 100%);
+      }
+      66%{
+        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 100%, #27a0e5 100%, #27a0e5 100%);
+      }
+      100%{
+        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 33%, #d9d9d9 33%, #d9d9d9 100%);
+      }
     }
 
     .step{
       text-align:center;
       position:relative;
+      z-index:1;
     }
 
     .step-circle{
       width:62px;
       height:62px;
       border-radius:50%;
-      background:#27a0e5;
-      color:#fff;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:26px;
+      margin:0 auto 12px;
+      font-size:24px;
       font-weight:800;
-      margin:0 auto 10px;
+      background:#27a0e5;
+      color:#fff;
+      animation:stepPulse 4.5s infinite ease-in-out;
+    }
+
+    .step:nth-child(2) .step-circle{
+      animation-delay:1.5s;
+    }
+
+    .step:nth-child(3) .step-circle{
+      animation-delay:3s;
+    }
+
+    @keyframes stepPulse{
+      0%,100%{
+        transform:scale(1);
+        box-shadow:0 0 0 rgba(39,160,229,0);
+      }
+      20%{
+        transform:scale(1.12);
+        box-shadow:0 0 0 12px rgba(39,160,229,0.12);
+      }
+      40%{
+        transform:scale(1);
+        box-shadow:0 0 0 rgba(39,160,229,0);
+      }
     }
 
     .step h4{
-      color:#156eb1;
       font-size:18px;
+      color:#156eb1;
     }
 
     .process-message{
       max-width:820px;
       margin:0 auto;
-      border:3px solid #d7d7d7;
-      border-radius:20px;
       padding:28px;
+      border:3px solid #dcdcdc;
+      border-radius:20px;
       text-align:center;
       background:#fcfcfc;
       position:relative;
@@ -409,34 +535,34 @@
 
     .process-message .badge{
       position:absolute;
-      top:-22px;
       left:50%;
       transform:translateX(-50%);
+      top:-22px;
       background:#ff9800;
       color:#fff;
       padding:8px 16px;
       border-radius:14px 14px 0 0;
-      font-weight:800;
       font-size:18px;
+      font-weight:800;
     }
 
     .process-message h3{
-      font-size:22px;
-      margin-bottom:10px;
-      color:#3d454c;
+      font-size:28px;
+      color:#3b444b;
+      margin-bottom:8px;
     }
 
     .process-message p{
       font-size:18px;
-      color:#515a62;
+      color:#525b63;
     }
 
     .process-desc{
       text-align:center;
-      max-width:1100px;
-      margin:26px auto 0;
       font-size:18px;
-      color:#4d565e;
+      color:#505860;
+      max-width:1100px;
+      margin:24px auto 0;
     }
 
     .why-wrap{
@@ -454,9 +580,14 @@
     .why-card{
       border-left:10px solid #156eb1;
       padding:18px 24px;
-      font-size:24px;
+      font-size:22px;
       font-weight:800;
       color:#2f3a44;
+      transition:0.3s ease;
+    }
+
+    .why-card:hover{
+      transform:translateX(6px);
     }
 
     .why-image img,
@@ -464,7 +595,6 @@
       width:100%;
       max-height:520px;
       object-fit:contain;
-      margin:auto;
     }
 
     .about-wrap{
@@ -476,16 +606,16 @@
 
     .about-content h2{
       font-size:40px;
-      line-height:1.2;
-      color:#2c3944;
+      color:#2d3945;
       margin-bottom:18px;
+      line-height:1.2;
       font-weight:800;
     }
 
     .about-content p{
       font-size:20px;
       color:#4d565e;
-      margin-bottom:12px;
+      margin-bottom:14px;
     }
 
     .testimonial-grid{
@@ -497,7 +627,8 @@
     .testimonial-card{
       padding:30px;
       min-height:260px;
-      background:#eef3f8;
+      background:#eef4f8;
+      transition:0.3s ease;
     }
 
     .testimonial-card.active{
@@ -505,12 +636,16 @@
       color:#fff;
     }
 
+    .testimonial-card:hover{
+      transform:translateY(-6px);
+    }
+
     .quote{
-      font-size:70px;
+      font-size:72px;
       line-height:1;
       color:#156eb1;
+      margin-bottom:12px;
       font-weight:800;
-      margin-bottom:18px;
     }
 
     .testimonial-card.active .quote{
@@ -549,17 +684,17 @@
       font-size:22px;
       font-weight:800;
       color:#156eb1;
+      background:#fff;
       display:flex;
       justify-content:space-between;
       align-items:center;
       cursor:pointer;
-      background:#fff;
     }
 
     .faq-answer{
       padding:0 28px 24px;
+      color:#5a6168;
       font-size:18px;
-      color:#5b6269;
       display:none;
       background:#fff;
     }
@@ -570,7 +705,7 @@
 
     .show-more-wrap{
       text-align:center;
-      margin-top:30px;
+      margin-top:28px;
     }
 
     .show-more-btn{
@@ -628,7 +763,7 @@
       border:none;
       cursor:pointer;
       color:#fff;
-      transition:0.3s;
+      transition:0.3s ease;
     }
 
     .action-btn:hover{
@@ -700,12 +835,19 @@
       color:#fff;
       text-align:center;
       padding:24px 16px;
-      margin-top:20px;
+      margin-top:10px;
       font-size:16px;
       font-weight:600;
     }
 
     @media (max-width:1100px){
+      .hero-box,
+      .why-wrap,
+      .about-wrap,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
       .brand-grid,
       .service-grid{
         grid-template-columns:repeat(3,1fr);
@@ -716,15 +858,8 @@
         grid-template-columns:1fr;
       }
 
-      .hero-box,
-      .why-wrap,
-      .about-wrap,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
       .brand-mini-grid{
-        grid-template-columns:repeat(3, 92px);
+        grid-template-columns:repeat(3,1fr);
       }
     }
 
@@ -752,18 +887,15 @@
       }
 
       .hero-box{
-        padding:28px 20px;
+        padding:26px 20px;
       }
 
       .hero-content h1{
         font-size:34px;
       }
 
-      .search-bar{
-        height:56px;
-      }
-
-      .search-bar input{
+      .search-input{
+        height:60px;
         font-size:20px;
       }
 
@@ -776,12 +908,13 @@
       }
 
       .brand-grid,
-      .service-grid{
-        grid-template-columns:repeat(2,1fr);
+      .service-grid,
+      .steps{
+        grid-template-columns:1fr 1fr;
       }
 
-      .steps{
-        grid-template-columns:1fr;
+      .steps::before{
+        display:none;
       }
 
       .action-group{
@@ -800,38 +933,31 @@
         right:14px;
       }
 
-      .floating-whatsapp{
-        bottom:86px;
-      }
-
-      .floating-call{
-        bottom:16px;
-      }
-
-      .more-brands-btn{
-        min-width:auto;
-        width:100%;
-      }
+      .floating-whatsapp{ bottom:86px; }
+      .floating-call{ bottom:14px; }
     }
 
     @media (max-width:520px){
       .brand-grid,
       .service-grid,
-      .before-after{
+      .brand-mini-grid,
+      .before-after,
+      .steps{
         grid-template-columns:1fr;
-      }
-
-      .brand-mini-grid{
-        grid-template-columns:repeat(2, 92px);
       }
 
       .hero-content h1{
         font-size:28px;
       }
+
+      .more-brands-btn{
+        width:100%;
+        min-width:auto;
+      }
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 
   <nav class="navbar">
     <div class="container nav-wrap">
@@ -858,30 +984,66 @@
           <h1>Hanuman Mobiles & Service Center</h1>
           <p>
             Trusted mobile repair, accessories, display replacement, battery change,
-            software support, and doorstep customer service for your daily mobile needs.
+            software support, and smooth local service under one roof.
           </p>
 
-          <div class="search-bar">
-            <input type="text" placeholder="Search Your Brand" />
+          <div class="search-box">
+            <input class="search-input" list="brandList" placeholder="Search Your Brand" />
             <span class="search-icon">⌕</span>
           </div>
+
+          <datalist id="brandList">
+            <option value="Apple">
+            <option value="Samsung">
+            <option value="Vivo">
+            <option value="Xiaomi">
+            <option value="Realme">
+            <option value="OnePlus">
+          </datalist>
+
+          <select class="brand-select">
+            <option selected>Select Brand from Dropdown</option>
+            <option>Apple</option>
+            <option>Samsung</option>
+            <option>Vivo</option>
+            <option>Xiaomi</option>
+            <option>Realme</option>
+            <option>OnePlus</option>
+          </select>
 
           <div class="hero-note">-- Pick a brand for your phone --</div>
 
           <div class="brand-mini-grid">
-            <div class="brand-mini-card"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"></div>
-            <div class="brand-mini-card"><span>Samsung</span></div>
-            <div class="brand-mini-card"><span>Vivo</span></div>
-            <div class="brand-mini-card"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Mi"></div>
-            <div class="brand-mini-card"><span>Realme</span></div>
-            <div class="brand-mini-card"><span>OnePlus</span></div>
+            <div class="brand-mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+              <span>Apple</span>
+            </div>
+            <div class="brand-mini-card">
+              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=S" alt="Samsung">
+              <span>Samsung</span>
+            </div>
+            <div class="brand-mini-card">
+              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=V" alt="Vivo">
+              <span>Vivo</span>
+            </div>
+            <div class="brand-mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
+              <span>Xiaomi</span>
+            </div>
+            <div class="brand-mini-card">
+              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=R" alt="Realme">
+              <span>Realme</span>
+            </div>
+            <div class="brand-mini-card">
+              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=1%2B" alt="OnePlus">
+              <span>OnePlus</span>
+            </div>
           </div>
 
           <a href="#brands" class="more-brands-btn">More Brands</a>
         </div>
 
         <div class="hero-image">
-          <!-- REPLACE THIS IMAGE WITH YOUR OWN SHOP / MOBILE REPAIR IMAGE -->
           <img src="https://img.freepik.com/free-vector/repair-service-abstract-concept-illustration_335657-3899.jpg" alt="Mobile repair">
         </div>
       </div>
@@ -892,12 +1054,30 @@
     <div class="container">
       <h2 class="section-title">Popular Repaired Brands</h2>
       <div class="card-grid brand-grid">
-        <div class="brand-card"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/OP_LUMIA_logo.svg" alt="OnePlus"></div>
-        <div class="brand-card"><img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Vivo_logo_2019.svg" alt="Vivo"></div>
-        <div class="brand-card"><img src="https://upload.wikimedia.org/wikipedia/commons/9/94/OPPO_LOGO_2019.svg" alt="Oppo"></div>
-        <div class="brand-card"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/POCO_logo.svg" alt="Poco"></div>
-        <div class="brand-card"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" alt="Asus"></div>
-        <div class="brand-card"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"></div>
+        <div class="brand-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+          <span>Apple</span>
+        </div>
+        <div class="brand-card">
+          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=Samsung" alt="Samsung">
+          <span>Samsung</span>
+        </div>
+        <div class="brand-card">
+          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=Vivo" alt="Vivo">
+          <span>Vivo</span>
+        </div>
+        <div class="brand-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
+          <span>Xiaomi</span>
+        </div>
+        <div class="brand-card">
+          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=Realme" alt="Realme">
+          <span>Realme</span>
+        </div>
+        <div class="brand-card">
+          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=OnePlus" alt="OnePlus">
+          <span>OnePlus</span>
+        </div>
       </div>
     </div>
   </section>
@@ -905,13 +1085,15 @@
   <section id="services">
     <div class="container">
       <h2 class="section-title">Popular Repaired Services</h2>
+      <p class="section-subtitle">Hover on cards to highlight your recent service types.</p>
+
       <div class="card-grid service-grid">
         <div class="service-card">
           <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Camera replacement">
           <h3>Camera replacement</h3>
         </div>
         <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=600&q=80" alt="Screen replacement">
+          <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=600&q=80" alt="Display replacement">
           <h3>Display replacement</h3>
         </div>
         <div class="service-card">
@@ -923,11 +1105,11 @@
           <h3>Mic replacement</h3>
         </div>
         <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80" alt="Vibrator replacement">
-          <h3>Vibrator replacement</h3>
+          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80" alt="Battery service">
+          <h3>Battery service</h3>
         </div>
         <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=600&q=80" alt="Charging jack">
+          <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=600&q=80" alt="Charging connector jack">
           <h3>Charging connector jack</h3>
         </div>
       </div>
@@ -937,49 +1119,49 @@
   <section id="repairs">
     <div class="container">
       <h2 class="section-title">Mobile Repairs by Hanuman Mobiles</h2>
+      <p class="section-subtitle">For now I kept sample before/after images. Later replace with your recent repaired mobile uploads.</p>
+
       <div class="card-grid repair-grid">
         <div class="repair-card">
           <h3>iPhone 14</h3>
           <p>Display replacement (front)</p>
           <div class="before-after">
-            <div>
-              <!-- REPLACE WITH YOUR BEFORE IMAGE -->
-              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Before">
+            <div class="before-after-box">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Before">
               <strong>Before</strong>
             </div>
-            <div>
-              <!-- REPLACE WITH YOUR AFTER IMAGE -->
-              <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="After">
+            <div class="before-after-box">
+              <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80" alt="After">
               <strong>After</strong>
             </div>
           </div>
         </div>
 
         <div class="repair-card">
-          <h3>iPhone 14 Plus</h3>
-          <p>Back glass replacement</p>
+          <h3>Samsung A Series</h3>
+          <p>Back panel replacement</p>
           <div class="before-after">
-            <div>
-              <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=600&q=80" alt="Before">
+            <div class="before-after-box">
+              <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=700&q=80" alt="Before">
               <strong>Before</strong>
             </div>
-            <div>
-              <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=600&q=80" alt="After">
+            <div class="before-after-box">
+              <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=700&q=80" alt="After">
               <strong>After</strong>
             </div>
           </div>
         </div>
 
         <div class="repair-card">
-          <h3>OnePlus 7 Pro</h3>
-          <p>Display replacement (front)</p>
+          <h3>OnePlus</h3>
+          <p>Display and touch repair</p>
           <div class="before-after">
-            <div>
-              <img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?auto=format&fit=crop&w=600&q=80" alt="Before">
+            <div class="before-after-box">
+              <img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?auto=format&fit=crop&w=700&q=80" alt="Before">
               <strong>Before</strong>
             </div>
-            <div>
-              <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=600&q=80" alt="After">
+            <div class="before-after-box">
+              <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=700&q=80" alt="After">
               <strong>After</strong>
             </div>
           </div>
@@ -993,9 +1175,9 @@
       <div class="process-box">
         <h2 class="section-title">Our Service Process</h2>
 
-        <div class="process-toggle">
-          <div class="active">Pickup & Delivery</div>
-          <div>Doorstep Service</div>
+        <div class="process-tabs">
+          <div class="process-tab active">Pickup & Delivery</div>
+          <div class="process-tab">Doorstep Service</div>
         </div>
 
         <div class="steps">
@@ -1008,7 +1190,7 @@
             <h4>Expert Repair</h4>
           </div>
           <div class="step">
-            <div class="step-circle" style="background:#fff;color:#27a0e5;border:3px solid #27a0e5;">3</div>
+            <div class="step-circle">3</div>
             <h4>Safe Delivery</h4>
           </div>
         </div>
@@ -1020,8 +1202,7 @@
         </div>
 
         <p class="process-desc">
-          Our pickup and delivery service is highly recommended, offering quality repairs in a controlled environment
-          so your phone comes back stable, safe, and ready for daily use.
+          Our pickup and delivery flow repeats smoothly, moving from 1 to 2 to 3, so the customer journey feels clear, simple, and professional.
         </p>
       </div>
     </div>
@@ -1042,7 +1223,6 @@
         </div>
 
         <div class="why-image">
-          <!-- REPLACE THIS IMAGE -->
           <img src="https://img.freepik.com/free-vector/mobile-apps-concept-illustration_114360-1789.jpg" alt="Why choose us">
         </div>
       </div>
@@ -1053,7 +1233,6 @@
     <div class="container">
       <div class="about-wrap">
         <div class="about-image">
-          <!-- REPLACE THIS IMAGE -->
           <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-phone-technician-illustration_23-2148796552.jpg" alt="About mobile repair">
         </div>
 
@@ -1061,14 +1240,13 @@
           <h2>Hanuman Mobiles – Trusted Mobile Repair & Service Center</h2>
           <p>
             Hanuman Mobiles offers fast and affordable mobile repair, accessories, software support,
-            display replacement, battery change, and day-to-day service work.
+            display replacement, battery change, and general service work.
           </p>
           <p>
-            We focus on practical service, clear pricing, and customer trust. The old way still matters:
-            do the job right, speak clearly, and stand by the work.
+            The business runs on trust, fair pricing, and clear communication. That old-school service discipline still wins.
           </p>
           <p>
-            Replace this section with your own shop story, experience, location details, and service promise.
+            Later you can replace this text with your own shop story, local area, years of experience, and service promise.
           </p>
         </div>
       </div>
@@ -1082,21 +1260,21 @@
       <div class="testimonial-grid">
         <div class="testimonial-card">
           <div class="quote">“</div>
-          <p>The service was quick and the staff explained the issue properly. Good work and fair price.</p>
+          <p>The service was quick and the issue was explained properly. Good support and no confusion.</p>
           <h3>Ramesh</h3>
           <div class="stars">★★★★☆</div>
         </div>
 
         <div class="testimonial-card active">
           <div class="quote">“</div>
-          <p>Very smooth process. My phone display was replaced and the device works perfectly now.</p>
+          <p>Very smooth repair process. My phone display was replaced and the phone now works perfectly.</p>
           <h3>Surya</h3>
           <div class="stars">★★★★☆</div>
         </div>
 
         <div class="testimonial-card">
           <div class="quote">“</div>
-          <p>Battery issue solved fast. Support was polite and service quality felt professional.</p>
+          <p>Battery and charging issue got solved fast. The work felt neat and professional.</p>
           <h3>Harish</h3>
           <div class="stars">★★★★☆</div>
         </div>
@@ -1116,8 +1294,8 @@
             <span>⌃</span>
           </div>
           <div class="faq-answer">
-            We provide screen replacement, battery replacement, software support, charging issues,
-            speaker and mic repair, camera problems, and general mobile service work.
+            We provide display replacement, battery replacement, software support, speaker and mic repair,
+            charging issues, camera issues, and general mobile service work.
           </div>
         </div>
 
@@ -1127,7 +1305,7 @@
             <span>⌄</span>
           </div>
           <div class="faq-answer">
-            Add your full address here. You can also attach Google Maps location and navigation link for customers.
+            Add your full address here. I already attached the navigation button with your Google Maps link below.
           </div>
         </div>
 
@@ -1137,7 +1315,7 @@
             <span>⌄</span>
           </div>
           <div class="faq-answer">
-            Yes, we handle many popular brands like Apple, Samsung, Vivo, Oppo, Redmi, Realme, OnePlus, and more.
+            Yes. Apple, Samsung, Vivo, Xiaomi, Realme, OnePlus, and many other common mobile brands can be handled.
           </div>
         </div>
       </div>
@@ -1151,7 +1329,7 @@
   <section id="contact">
     <div class="container">
       <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle">Let customers reach your shop fast and without confusion.</p>
+      <p class="section-subtitle">Let customers reach your shop fast.</p>
 
       <div class="contact-grid">
         <div class="contact-card">
@@ -1167,7 +1345,7 @@
             <a class="action-btn call-btn" href="tel:+918074432996">📞 Call Now</a>
             <a class="action-btn wa-btn" href="https://wa.me/918074432996" target="_blank">💬 WhatsApp</a>
             <a class="action-btn review-btn" href="https://g.page/r/CUSTOM-REVIEW-LINK/review" target="_blank">⭐ Google Reviews</a>
-            <a class="action-btn map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Hyderabad" target="_blank">📍 Navigate</a>
+            <a class="action-btn map-btn" href="https://maps.app.goo.gl/sAuRLDQoN3YR7FkLA" target="_blank">📍 Navigate</a>
           </div>
 
           <div class="copy-status" id="copyStatus"></div>
@@ -1206,9 +1384,17 @@
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
+    const faqItems = document.querySelectorAll('.faq-item');
 
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('show');
+    });
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
     });
 
     function copyPhoneNumber() {
@@ -1230,13 +1416,43 @@
         });
     }
 
-    const faqItems = document.querySelectorAll('.faq-item');
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'PrintScreen') {
+        e.preventDefault();
+        alert('Screenshot shortcut is discouraged on this website.');
+      }
 
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
-        item.classList.toggle('active');
-      });
+      if ((e.ctrlKey || e.metaKey) && ['c','u','s','p','a','x'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+
+      if (e.ctrlKey && e.shiftKey && ['i','j','c','s'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+
+      if (e.key === 'F12') {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('cut', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
     });
   </script>
 
