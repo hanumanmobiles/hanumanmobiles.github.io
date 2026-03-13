@@ -3,60 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hanuman Mobiles & Service Center</title>
+  <title>Hanuman Mobiles & Services Center</title>
   <style>
-    .nav-logo{
-  width:40px;
-  height:40px;
-  object-fit:contain;
-  margin-right:10px;
+    :root{
+      --bg-1:#0f172a;
+      --bg-2:#1e293b;
+      --glass:rgba(255,255,255,0.12);
+      --glass-strong:rgba(255,255,255,0.18);
+      --border:rgba(255,255,255,0.22);
+      --text:#f8fafc;
+      --muted:#cbd5e1;
+      --accent:#f59e0b;
+      --accent-2:#fb7185;
+      --shadow:0 18px 45px rgba(0,0,0,0.25);
     }
 
-     .logo{
-     display:flex;
-     align-items:center;
-     gap:10px;
-     font-size:28px;
-     font-weight:800;
-     color:#0d6efd;
-    }
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html{
-      scroll-behavior:smooth;
+      font-family:Arial, Helvetica, sans-serif;
     }
 
     body{
-      background:linear-gradient(180deg,#eef6fc 0%, #f9fcff 100%);
-      color:#243746;
-      line-height:1.6;
+      min-height:100vh;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(251,113,133,0.14), transparent 24%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
       overflow-x:hidden;
-      user-select:none;
-      -webkit-user-select:none;
-      -moz-user-select:none;
-      -ms-user-select:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-      pointer-events:none;
-      -webkit-user-drag:none;
-      user-drag:none;
-    }
-
-    a{
-      text-decoration:none;
     }
 
     .container{
-      width:min(1200px,92%);
+      width:min(1240px, 92%);
       margin:auto;
     }
 
@@ -64,1417 +44,531 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(255,255,255,0.95);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid #dbe7f0;
-      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+      backdrop-filter:blur(16px);
+      background:rgba(15,23,42,0.55);
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
     .nav-wrap{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:20px;
-      padding:16px 0;
-    }
-
-    .logo{
-      font-size:28px;
-      font-weight:800;
-      color:#0d6efd;
-    }
-
-    .logo span{
-      color:#ff9800;
-    }
-
-    .nav-links{
-      display:flex;
-      list-style:none;
-      gap:24px;
       align-items:center;
+      padding:16px 0;
+      gap:20px;
     }
 
-    .nav-links a{
-      color:#243746;
-      font-weight:700;
-      transition:0.3s;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:1.3rem;
+      font-weight:800;
+      letter-spacing:0.4px;
     }
 
-    .nav-links a:hover{
-      color:#0d6efd;
-    }
-
-    .menu-btn{
-      display:none;
-      border:none;
-      background:none;
-      font-size:30px;
-      color:#0d6efd;
-      cursor:pointer;
+    .brand .logo{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(245,158,11,0.22), rgba(251,113,133,0.18));
+      border:1px solid rgba(255,255,255,0.16);
+      box-shadow:var(--shadow);
+      font-size:1.35rem;
     }
 
     .hero{
-      padding:42px 0 24px;
+      padding:44px 0 28px;
     }
 
-    .hero-box{
-      background:linear-gradient(135deg,#0d6fb4 0%, #0a77c6 50%, #0f6cad 100%);
-      border-radius:32px;
-      box-shadow:0 20px 40px rgba(13,111,180,0.22);
-      padding:48px;
+    .hero-card{
       display:grid;
       grid-template-columns:1.15fr 0.85fr;
-      align-items:center;
-      gap:30px;
-      color:#fff;
-      overflow:hidden;
-    }
-
-    .hero-content h1{
-      font-size:48px;
-      line-height:1.15;
-      margin-bottom:14px;
-      font-weight:800;
-    }
-
-    .hero-content p{
-      color:#eaf5ff;
-      font-size:19px;
-      margin-bottom:22px;
-      max-width:650px;
-    }
-
-    .search-box{
-      position:relative;
-      margin-bottom:24px;
-      max-width:760px;
-    }
-
-    .search-input{
-      width:100%;
-      height:72px;
-      border:none;
-      outline:none;
-      border-radius:22px;
-      padding:0 70px 0 28px;
-      font-size:24px;
-      color:#536170;
-      box-shadow:0 10px 18px rgba(0,0,0,0.12);
-    }
-
-    .search-icon{
-      position:absolute;
-      right:24px;
-      top:50%;
-      transform:translateY(-50%);
-      font-size:32px;
-      color:#536170;
-      pointer-events:none;
-    }
-
-    .brand-select{
-      width:100%;
-      max-width:760px;
-      margin-top:12px;
-      height:56px;
-      border:none;
-      outline:none;
-      border-radius:16px;
-      padding:0 18px;
-      font-size:18px;
-      color:#355064;
-      background:#ffffff;
-      box-shadow:0 8px 16px rgba(0,0,0,0.12);
-    }
-
-    .hero-note{
-      margin:24px 0 18px;
-      font-size:20px;
-      font-weight:800;
-    }
-
-    .brand-mini-grid{
-      display:grid;
-      grid-template-columns:repeat(6,1fr);
-      gap:18px;
-      margin-bottom:22px;
-      max-width:960px;
-    }
-
-    .brand-mini-card{
-      background:#fff;
-      border-radius:22px;
-      min-height:138px;
-      padding:14px 10px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 10px 18px rgba(0,0,0,0.12);
-      text-align:center;
-      transition:0.3s ease;
-    }
-
-    .brand-mini-card:hover{
-      transform:translateY(-4px);
-    }
-
-    .brand-mini-card img{
-      width:58px;
-      height:58px;
-      object-fit:contain;
-      margin-bottom:10px;
-    }
-
-    .brand-mini-card span{
-      font-size:16px;
-      font-weight:800;
-      color:#156eb1;
-      line-height:1.25;
-    }
-
-    .more-brands-btn{
-      display:inline-block;
-      background:#fff;
-      color:#156eb1;
-      font-size:20px;
-      font-weight:800;
-      padding:18px 34px;
-      border-radius:20px;
-      min-width:280px;
-      text-align:center;
-      box-shadow:0 10px 18px rgba(0,0,0,0.12);
-      transition:0.3s ease;
-    }
-
-    .more-brands-btn:hover{
-      transform:translateY(-4px);
-    }
-
-    .hero-image img{
-      width:100%;
-      max-height:470px;
-      object-fit:contain;
-      border-radius:20px;
-      filter:drop-shadow(0 14px 24px rgba(0,0,0,0.2));
-    }
-
-    section{
-      padding:56px 0;
-    }
-
-    .section-title{
-      text-align:center;
-      font-size:50px;
-      color:#2d3b47;
-      font-weight:800;
-      margin-bottom:10px;
-    }
-
-    .section-subtitle{
-      text-align:center;
-      color:#156eb1;
-      font-size:19px;
-      margin-bottom:34px;
-    }
-
-    .card-grid{
-      display:grid;
-      gap:22px;
-    }
-
-    .brand-grid{
-      grid-template-columns:repeat(6,1fr);
-    }
-
-    .service-grid{
-      grid-template-columns:repeat(6,1fr);
-    }
-
-    .repair-grid{
-      grid-template-columns:repeat(3,1fr);
-    }
-
-    .brand-card,
-    .service-card,
-    .repair-card,
-    .why-card,
-    .testimonial-card,
-    .faq-item,
-    .contact-card,
-    .process-box{
-      background:#fff;
-      border-radius:24px;
-      box-shadow:0 10px 22px rgba(0,0,0,0.09);
-    }
-
-    .brand-card{
-      min-height:190px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      text-align:center;
-      transition:0.3s ease;
-    }
-
-    .brand-card:hover{
-      transform:translateY(-5px);
-    }
-
-    .brand-card img{
-      width:90px;
-      height:90px;
-      object-fit:contain;
-      margin-bottom:12px;
-    }
-
-    .brand-card span{
-      font-weight:800;
-      color:#2f4250;
-      font-size:18px;
-    }
-
-    .service-card{
-      min-height:240px;
-      padding:18px 14px;
-      text-align:center;
-      transition:0.3s ease;
-      cursor:default;
-    }
-
-    .service-card:hover{
-      transform:translateY(-6px) scale(1.02);
-      box-shadow:0 16px 28px rgba(0,0,0,0.14);
-    }
-
-    .service-card img{
-      width:118px;
-      height:95px;
-      object-fit:cover;
-      border-radius:14px;
-      margin:0 auto 14px;
-    }
-
-    .service-card h3{
-      font-size:18px;
-      color:#374652;
-      line-height:1.35;
-    }
-
-    .repair-card{
-      padding:24px;
-      text-align:center;
-      transition:0.3s ease;
-    }
-
-    .repair-card:hover{
-      transform:translateY(-5px);
-    }
-
-    .repair-card h3{
-      font-size:24px;
-      margin-bottom:8px;
-      color:#2f3f4c;
-    }
-
-    .repair-card p{
-      font-size:18px;
-      color:#51606d;
-      margin-bottom:18px;
-    }
-
-    .before-after{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    .before-after-box{
-      text-align:center;
-    }
-
-    .before-after-box img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      border-radius:16px;
-      margin-bottom:10px;
-      border:2px solid #d8e8f5;
-      background:#eef6fc;
-    }
-
-    .before-after-box strong{
-      color:#2f3f4c;
-      font-size:18px;
-    }
-
-    .process-box{
+      gap:28px;
       padding:34px;
-    }
-
-    .process-tabs{
-      max-width:760px;
-      margin:0 auto 30px;
-      background:#51c4a2;
-      border-radius:999px;
-      display:flex;
+      background:var(--glass);
+      border:1px solid var(--border);
+      border-radius:28px;
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
       overflow:hidden;
     }
 
-    .process-tab{
-      flex:1;
-      text-align:center;
-      padding:16px 12px;
-      color:#fff;
-      font-size:20px;
-      font-weight:800;
-    }
-
-    .process-tab.active{
-      background:#156eb1;
-      position:relative;
-    }
-
-    .process-tab.active::before{
-      content:"Recommended";
-      position:absolute;
-      left:12px;
-      top:10px;
-      background:#ff9800;
-      color:#fff;
-      font-size:12px;
-      padding:4px 10px;
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
       border-radius:999px;
-      font-weight:800;
-    }
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-      align-items:start;
-      margin:28px 0 24px;
-      position:relative;
-    }
-
-    .steps::before{
-      content:"";
-      position:absolute;
-      top:30px;
-      left:16%;
-      width:68%;
-      height:8px;
-      background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 33%, #d9d9d9 33%, #d9d9d9 100%);
-      border-radius:999px;
-      z-index:0;
-      animation:processLine 4.5s infinite ease-in-out;
-    }
-
-    @keyframes processLine{
-      0%{
-        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 33%, #d9d9d9 33%, #d9d9d9 100%);
-      }
-      33%{
-        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 66%, #d9d9d9 66%, #d9d9d9 100%);
-      }
-      66%{
-        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 100%, #27a0e5 100%, #27a0e5 100%);
-      }
-      100%{
-        background:linear-gradient(90deg,#27a0e5 0%, #27a0e5 33%, #d9d9d9 33%, #d9d9d9 100%);
-      }
-    }
-
-    .step{
-      text-align:center;
-      position:relative;
-      z-index:1;
-    }
-
-    .step-circle{
-      width:62px;
-      height:62px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 12px;
-      font-size:24px;
-      font-weight:800;
-      background:#27a0e5;
-      color:#fff;
-      animation:stepPulse 4.5s infinite ease-in-out;
-    }
-
-    .step:nth-child(2) .step-circle{
-      animation-delay:1.5s;
-    }
-
-    .step:nth-child(3) .step-circle{
-      animation-delay:3s;
-    }
-
-    @keyframes stepPulse{
-      0%,100%{
-        transform:scale(1);
-        box-shadow:0 0 0 rgba(39,160,229,0);
-      }
-      20%{
-        transform:scale(1.12);
-        box-shadow:0 0 0 12px rgba(39,160,229,0.12);
-      }
-      40%{
-        transform:scale(1);
-        box-shadow:0 0 0 rgba(39,160,229,0);
-      }
-    }
-
-    .step h4{
-      font-size:18px;
-      color:#156eb1;
-    }
-
-    .process-message{
-      max-width:820px;
-      margin:0 auto;
-      padding:28px;
-      border:3px solid #dcdcdc;
-      border-radius:20px;
-      text-align:center;
-      background:#fcfcfc;
-      position:relative;
-    }
-
-    .process-message .badge{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      top:-22px;
-      background:#ff9800;
-      color:#fff;
-      padding:8px 16px;
-      border-radius:14px 14px 0 0;
-      font-size:18px;
-      font-weight:800;
-    }
-
-    .process-message h3{
-      font-size:28px;
-      color:#3b444b;
-      margin-bottom:8px;
-    }
-
-    .process-message p{
-      font-size:18px;
-      color:#525b63;
-    }
-
-    .process-desc{
-      text-align:center;
-      font-size:18px;
-      color:#505860;
-      max-width:1100px;
-      margin:24px auto 0;
-    }
-
-    .why-wrap{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:34px;
-      align-items:center;
-    }
-
-    .why-list{
-      display:grid;
-      gap:18px;
-    }
-
-    .why-card{
-      border-left:10px solid #156eb1;
-      padding:18px 24px;
-      font-size:22px;
-      font-weight:800;
-      color:#2f3a44;
-      transition:0.3s ease;
-    }
-
-    .why-card:hover{
-      transform:translateX(6px);
-    }
-
-    .why-image img,
-    .about-image img{
-      width:100%;
-      max-height:520px;
-      object-fit:contain;
-    }
-
-    .about-wrap{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:34px;
-      align-items:center;
-    }
-
-    .about-content h2{
-      font-size:40px;
-      color:#2d3945;
-      margin-bottom:18px;
-      line-height:1.2;
-      font-weight:800;
-    }
-
-    .about-content p{
-      font-size:20px;
-      color:#4d565e;
-      margin-bottom:14px;
-    }
-
-    .testimonial-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .testimonial-card{
-      padding:30px;
-      min-height:260px;
-      background:#eef4f8;
-      transition:0.3s ease;
-    }
-
-    .testimonial-card.active{
-      background:#106fb2;
-      color:#fff;
-    }
-
-    .testimonial-card:hover{
-      transform:translateY(-6px);
-    }
-
-    .quote{
-      font-size:72px;
-      line-height:1;
-      color:#156eb1;
-      margin-bottom:12px;
-      font-weight:800;
-    }
-
-    .testimonial-card.active .quote{
-      color:#fff;
-    }
-
-    .testimonial-card p{
-      font-size:18px;
-      line-height:1.5;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:#fde68a;
+      font-size:0.95rem;
       margin-bottom:16px;
     }
 
-    .testimonial-card h3{
-      font-size:24px;
-      margin-bottom:8px;
-    }
-
-    .stars{
-      color:#ff9800;
-      font-size:28px;
-      letter-spacing:2px;
-    }
-
-    .faq-list{
-      display:grid;
-      gap:18px;
-    }
-
-    .faq-item{
-      overflow:hidden;
-      border:3px solid #156eb1;
-    }
-
-    .faq-question{
-      padding:22px 28px;
-      font-size:22px;
-      font-weight:800;
-      color:#156eb1;
-      background:#fff;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      cursor:pointer;
-    }
-
-    .faq-answer{
-      padding:0 28px 24px;
-      color:#5a6168;
-      font-size:18px;
-      display:none;
-      background:#fff;
-    }
-
-    .faq-item.active .faq-answer{
-      display:block;
-    }
-
-    .show-more-wrap{
-      text-align:center;
-      margin-top:28px;
-    }
-
-    .show-more-btn{
-      display:inline-block;
-      background:#156eb1;
-      color:#fff;
-      padding:14px 28px;
-      border-radius:6px;
-      font-size:18px;
-      font-weight:800;
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-    }
-
-    .contact-card{
-      padding:28px;
-    }
-
-    .contact-card h3{
-      font-size:28px;
-      color:#156eb1;
+    .hero h1{
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.1;
       margin-bottom:14px;
     }
 
-    .contact-card p{
-      font-size:18px;
-      color:#46535f;
-      margin-bottom:10px;
+    .hero p{
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:720px;
+      line-height:1.7;
+      margin-bottom:22px;
     }
 
-    .contact-card strong{
-      color:#2e3c49;
-    }
-
-    .action-group{
+    .hero-points{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:20px;
     }
 
-    .action-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:12px 18px;
-      border-radius:12px;
-      font-size:15px;
-      font-weight:800;
-      border:none;
-      cursor:pointer;
-      color:#fff;
-      transition:0.3s ease;
-    }
-
-    .action-btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .copy-btn{ background:#1e88e5; }
-    .call-btn{ background:#ff6d2d; }
-    .wa-btn{ background:#25d366; }
-    .review-btn{ background:#ff9800; }
-    .map-btn{ background:#7b61ff; }
-
-    .copy-status{
-      margin-top:14px;
-      min-height:20px;
-      color:#16a34a;
+    .point{
+      padding:12px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:#e2e8f0;
       font-weight:700;
+      font-size:0.95rem;
     }
 
-    .hours-table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:8px;
-    }
-
-    .hours-table td{
-      padding:12px 0;
-      border-bottom:1px solid #dbe7f0;
-      font-size:17px;
-      color:#4d5a67;
-    }
-
-    .map-frame{
-      width:100%;
-      min-height:350px;
-      border:none;
-      border-radius:18px;
-      margin-top:16px;
-    }
-
-    .floating-whatsapp,
-    .floating-call{
-      position:fixed;
-      right:20px;
-      width:64px;
-      height:64px;
-      border-radius:50%;
+    .hero-visual{
+      min-height:280px;
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(245,158,11,0.3), transparent 26%),
+        radial-gradient(circle at 80% 20%, rgba(251,113,133,0.22), transparent 24%),
+        linear-gradient(160deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05));
+      border:1px solid rgba(255,255,255,0.12);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#fff;
-      font-size:28px;
-      z-index:1200;
-      box-shadow:0 10px 18px rgba(0,0,0,0.22);
+      padding:24px;
+      position:relative;
+      isolation:isolate;
     }
 
-    .floating-whatsapp{
-      bottom:96px;
-      background:#25d366;
+    .phone-stack{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(120px, 1fr));
+      gap:18px;
+      width:100%;
+      max-width:340px;
     }
 
-    .floating-call{
-      bottom:20px;
-      background:#ff6d2d;
+    .mini-phone{
+      aspect-ratio:9/16;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.08));
+      border:1px solid rgba(255,255,255,0.14);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
     }
 
-    footer{
-      background:#0d6aa8;
-      color:#fff;
+    section{
+      padding:28px 0 36px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:18px;
+    }
+
+    .section-head.left{
+      justify-content:flex-start;
+    }
+
+    .section-head h2{
+      font-size:clamp(1.4rem, 2vw, 2.2rem);
+      text-align:left;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      max-width:680px;
+      line-height:1.6;
+    }
+
+    .services-row{
+      display:grid;
+      grid-template-columns:repeat(7, minmax(150px, 1fr));
+      gap:16px;
+      overflow-x:auto;
+      padding-bottom:8px;
+      scroll-behavior:smooth;
+    }
+
+    .services-row::-webkit-scrollbar{
+      height:10px;
+    }
+
+    .services-row::-webkit-scrollbar-thumb{
+      background:rgba(255,255,255,0.18);
+      border-radius:999px;
+    }
+
+    .glass-card{
+      min-width:150px;
+      background:var(--glass);
+      border:1px solid var(--border);
+      border-radius:24px;
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow);
+      transition:transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .glass-card:hover,
+    .glass-card.active{
+      transform:translateY(-4px);
+      border-color:rgba(245,158,11,0.5);
+      background:var(--glass-strong);
+    }
+
+    .service-btn{
+      width:100%;
+      min-height:148px;
+      border:none;
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      padding:18px 14px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .service-icon{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:1.6rem;
+      background:linear-gradient(135deg, rgba(245,158,11,0.2), rgba(251,113,133,0.16));
+      border:1px solid rgba(255,255,255,0.16);
+    }
+
+    .service-name{
       text-align:center;
-      padding:24px 16px;
-      margin-top:10px;
-      font-size:16px;
-      font-weight:600;
+      font-weight:800;
+      line-height:1.35;
+      font-size:0.95rem;
+    }
+
+    .brand-panel{
+      margin-top:22px;
+      padding:22px;
+      background:var(--glass);
+      border:1px solid var(--border);
+      border-radius:28px;
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+    }
+
+    .panel-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .panel-top h3{
+      font-size:1.35rem;
+    }
+
+    .panel-top p{
+      color:var(--muted);
+    }
+
+    .brand-grid{
+      display:grid;
+      grid-template-columns:repeat(8, minmax(110px, 1fr));
+      gap:14px;
+    }
+
+    .brand-chip{
+      padding:16px 12px;
+      text-align:center;
+      border-radius:18px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      font-weight:800;
+      color:#f8fafc;
+      letter-spacing:0.2px;
+      transition:transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .brand-chip:hover{
+      transform:translateY(-3px);
+      border-color:rgba(245,158,11,0.5);
+    }
+
+    .footer-note{
+      margin-top:18px;
+      color:#cbd5e1;
+      font-size:0.96rem;
+      line-height:1.6;
     }
 
     @media (max-width:1100px){
-      .hero-box,
-      .why-wrap,
-      .about-wrap,
-      .contact-grid{
+      .hero-card{
         grid-template-columns:1fr;
       }
 
-      .brand-grid,
-      .service-grid{
-        grid-template-columns:repeat(3,1fr);
+      .services-row{
+        grid-template-columns:repeat(7, 180px);
       }
 
-      .repair-grid,
-      .testimonial-grid{
-        grid-template-columns:1fr;
-      }
-
-      .brand-mini-grid{
-        grid-template-columns:repeat(3,1fr);
+      .brand-grid{
+        grid-template-columns:repeat(4, minmax(110px, 1fr));
       }
     }
 
     @media (max-width:768px){
-      .menu-btn{
-        display:block;
+      .hero-card{
+        padding:22px;
       }
 
-      .nav-links{
-        position:absolute;
-        top:78px;
-        right:4%;
-        width:240px;
-        background:#fff;
-        border-radius:14px;
-        padding:16px;
-        flex-direction:column;
-        align-items:flex-start;
-        display:none;
-        box-shadow:0 12px 20px rgba(0,0,0,0.12);
+      .services-row{
+        grid-template-columns:repeat(7, 165px);
       }
 
-      .nav-links.show{
-        display:flex;
+      .brand-grid{
+        grid-template-columns:repeat(2, minmax(110px, 1fr));
       }
 
-      .hero-box{
-        padding:26px 20px;
-      }
-
-      .hero-content h1{
-        font-size:34px;
-      }
-
-      .search-input{
-        height:60px;
-        font-size:20px;
-      }
-
-      .section-title{
-        font-size:36px;
-      }
-
-      .section-subtitle{
-        font-size:17px;
-      }
-
-      .brand-grid,
-      .service-grid,
-      .steps{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .steps::before{
-        display:none;
-      }
-
-      .action-group{
-        flex-direction:column;
-      }
-
-      .action-btn{
-        width:100%;
-      }
-
-      .floating-whatsapp,
-      .floating-call{
-        width:58px;
-        height:58px;
-        font-size:24px;
-        right:14px;
-      }
-
-      .floating-whatsapp{ bottom:86px; }
-      .floating-call{ bottom:14px; }
-    }
-
-    @media (max-width:520px){
-      .brand-grid,
-      .service-grid,
-      .brand-mini-grid,
-      .before-after,
-      .steps{
-        grid-template-columns:1fr;
-      }
-
-      .hero-content h1{
-        font-size:28px;
-      }
-
-      .more-brands-btn{
-        width:100%;
-        min-width:auto;
+      .service-btn{
+        min-height:132px;
       }
     }
   </style>
 </head>
-<body oncontextmenu="return false">
-
+<body>
   <nav class="navbar">
     <div class="container nav-wrap">
-
-      
-      <a href="#" class="logo">
-      <img src="images/hanuman-logo.png" class="nav-logo">
-       Hanuman Mobiles
-      </a>
-
-      <button class="menu-btn" id="menuBtn">☰</button>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#brands">Brands</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#repairs">Repairs</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="brand">
+        <div class="logo">🛠️</div>
+        <div>Hanuman Mobiles & Services Center</div>
+      </div>
     </div>
   </nav>
 
-  <section class="hero" id="home">
+  <header class="hero">
     <div class="container">
-      <div class="hero-box">
-        <div class="hero-content">
-          <h1>Hanuman Mobiles & Service Center</h1>
+      <div class="hero-card">
+        <div>
+          <div class="eyebrow">✨ Glass Card UI • Clean service layout</div>
+          <h1>Fast mobile repair. Clear service flow. Solid shop presence.</h1>
           <p>
-            Trusted mobile repair, accessories, display replacement, battery change,
-            software support, and smooth local service under one roof.
+            This layout is built for a modern local shop front. The service cards sit in one horizontal glass row, and when a customer clicks any service, the supported mobile brands open right below it.
           </p>
-
-          <div class="search-box">
-            <input class="search-input" list="brandList" placeholder="Search Your Brand" />
-            <span class="search-icon">⌕</span>
-          </div>
-
-          <datalist id="brandList">
-            <option value="Apple">
-            <option value="Samsung">
-            <option value="Vivo">
-            <option value="Xiaomi">
-            <option value="Realme">
-            <option value="OnePlus">
-          </datalist>
-
-          <select class="brand-select">
-            <option selected>Select Brand from Dropdown</option>
-            <option>Apple</option>
-            <option>Samsung</option>
-            <option>Vivo</option>
-            <option>Xiaomi</option>
-            <option>Realme</option>
-            <option>OnePlus</option>
-          </select>
-
-          <div class="hero-note">-- Pick a brand for your phone --</div>
-
-          <div class="brand-mini-grid">
-            <div class="brand-mini-card">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-              <span>Apple</span>
-            </div>
-            <div class="brand-mini-card">
-              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=S" alt="Samsung">
-              <span>Samsung</span>
-            </div>
-            <div class="brand-mini-card">
-              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=V" alt="Vivo">
-              <span>Vivo</span>
-            </div>
-            <div class="brand-mini-card">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
-              <span>Xiaomi</span>
-            </div>
-            <div class="brand-mini-card">
-              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=R" alt="Realme">
-              <span>Realme</span>
-            </div>
-            <div class="brand-mini-card">
-              <img src="https://dummyimage.com/120x120/f4f7fb/156eb1&text=1%2B" alt="OnePlus">
-              <span>OnePlus</span>
-            </div>
-          </div>
-
-          <a href="#brands" class="more-brands-btn">More Brands</a>
-        </div>
-
-        <div class="hero-image">
-          <img src="https://img.freepik.com/free-vector/repair-service-abstract-concept-illustration_335657-3899.jpg" alt="Mobile repair">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="brands">
-    <div class="container">
-      <h2 class="section-title">Popular Repaired Brands</h2>
-      <div class="card-grid brand-grid">
-        <div class="brand-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-          <span>Apple</span>
-        </div>
-        <div class="brand-card">
-          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=Samsung" alt="Samsung">
-          <span>Samsung</span>
-        </div>
-        <div class="brand-card">
-          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=Vivo" alt="Vivo">
-          <span>Vivo</span>
-        </div>
-        <div class="brand-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
-          <span>Xiaomi</span>
-        </div>
-        <div class="brand-card">
-          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=Realme" alt="Realme">
-          <span>Realme</span>
-        </div>
-        <div class="brand-card">
-          <img src="https://dummyimage.com/200x200/f4f7fb/156eb1&text=OnePlus" alt="OnePlus">
-          <span>OnePlus</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title">Popular Repaired Services</h2>
-      <p class="section-subtitle">Hover on cards to highlight your recent service types.</p>
-
-      <div class="card-grid service-grid">
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Camera replacement">
-          <h3>Camera replacement</h3>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=600&q=80" alt="Display replacement">
-          <h3>Display replacement</h3>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?auto=format&fit=crop&w=600&q=80" alt="Ringer replacement">
-          <h3>Ringer replacement</h3>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=600&q=80" alt="Mic replacement">
-          <h3>Mic replacement</h3>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80" alt="Battery service">
-          <h3>Battery service</h3>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=600&q=80" alt="Charging connector jack">
-          <h3>Charging connector jack</h3>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="repairs">
-    <div class="container">
-      <h2 class="section-title">Mobile Repairs by Hanuman Mobiles</h2>
-      <p class="section-subtitle">For now I kept sample before/after images. Later replace with your recent repaired mobile uploads.</p>
-
-      <div class="card-grid repair-grid">
-        <div class="repair-card">
-          <h3>iPhone 14</h3>
-          <p>Display replacement (front)</p>
-          <div class="before-after">
-            <div class="before-after-box">
-              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Before">
-              <strong>Before</strong>
-            </div>
-            <div class="before-after-box">
-              <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80" alt="After">
-              <strong>After</strong>
-            </div>
+          <div class="hero-points">
+            <div class="point">Screen Repairs</div>
+            <div class="point">Battery Replacement</div>
+            <div class="point">Motherboard Inspection</div>
+            <div class="point">Mobile Cleaning</div>
           </div>
         </div>
 
-        <div class="repair-card">
-          <h3>Samsung A Series</h3>
-          <p>Back panel replacement</p>
-          <div class="before-after">
-            <div class="before-after-box">
-              <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=700&q=80" alt="Before">
-              <strong>Before</strong>
-            </div>
-            <div class="before-after-box">
-              <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=700&q=80" alt="After">
-              <strong>After</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="repair-card">
-          <h3>OnePlus</h3>
-          <p>Display and touch repair</p>
-          <div class="before-after">
-            <div class="before-after-box">
-              <img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?auto=format&fit=crop&w=700&q=80" alt="Before">
-              <strong>Before</strong>
-            </div>
-            <div class="before-after-box">
-              <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=700&q=80" alt="After">
-              <strong>After</strong>
-            </div>
+        <div class="hero-visual">
+          <div class="phone-stack">
+            <div class="mini-phone">📱</div>
+            <div class="mini-phone">🔋</div>
+            <div class="mini-phone">🎤</div>
+            <div class="mini-phone">🔌</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
   <section>
     <div class="container">
-      <div class="process-box">
-        <h2 class="section-title">Our Service Process</h2>
-
-        <div class="process-tabs">
-          <div class="process-tab active">Pickup & Delivery</div>
-          <div class="process-tab">Doorstep Service</div>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-circle">1</div>
-            <h4>Schedule a Pickup</h4>
-          </div>
-          <div class="step">
-            <div class="step-circle">2</div>
-            <h4>Expert Repair</h4>
-          </div>
-          <div class="step">
-            <div class="step-circle">3</div>
-            <h4>Safe Delivery</h4>
-          </div>
-        </div>
-
-        <div class="process-message">
-          <div class="badge">Recommended</div>
-          <h3>Expert Repair</h3>
-          <p>Your device is repaired by skilled technicians using proper parts and careful handling.</p>
-        </div>
-
-        <p class="process-desc">
-          Our pickup and delivery flow repeats smoothly, moving from 1 to 2 to 3, so the customer journey feels clear, simple, and professional.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="why-us">
-    <div class="container">
-      <h2 class="section-title">Why Us!</h2>
-      <p class="section-subtitle">Your Mobile, Our Expertise.</p>
-
-      <div class="why-wrap">
-        <div class="why-list">
-          <div class="why-card">Premium Quality</div>
-          <div class="why-card">6 Month Warranty</div>
-          <div class="why-card">Pay After Service Done</div>
-          <div class="why-card">Doorstep Service</div>
-          <div class="why-card">Device Safety Assured</div>
-        </div>
-
-        <div class="why-image">
-          <img src="https://img.freepik.com/free-vector/mobile-apps-concept-illustration_114360-1789.jpg" alt="Why choose us">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="about-wrap">
-        <div class="about-image">
-          <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-phone-technician-illustration_23-2148796552.jpg" alt="About mobile repair">
-        </div>
-
-        <div class="about-content">
-          <h2>Hanuman Mobiles – Trusted Mobile Repair & Service Center</h2>
-          <p>
-            Hanuman Mobiles offers fast and affordable mobile repair, accessories, software support,
-            display replacement, battery change, and general service work.
-          </p>
-          <p>
-            The business runs on trust, fair pricing, and clear communication. That old-school service discipline still wins.
-          </p>
-          <p>
-            Later you can replace this text with your own shop story, local area, years of experience, and service promise.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2 class="section-title">Our Clients Say!!!</h2>
-
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="quote">“</div>
-          <p>The service was quick and the issue was explained properly. Good support and no confusion.</p>
-          <h3>Ramesh</h3>
-          <div class="stars">★★★★☆</div>
-        </div>
-
-        <div class="testimonial-card active">
-          <div class="quote">“</div>
-          <p>Very smooth repair process. My phone display was replaced and the phone now works perfectly.</p>
-          <h3>Surya</h3>
-          <div class="stars">★★★★☆</div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="quote">“</div>
-          <p>Battery and charging issue got solved fast. The work felt neat and professional.</p>
-          <h3>Harish</h3>
-          <div class="stars">★★★★☆</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">The most common questions about how our works.</p>
-
-      <div class="faq-list">
-        <div class="faq-item active">
-          <div class="faq-question">
-            <span>What mobile services do you offer?</span>
-            <span>⌃</span>
-          </div>
-          <div class="faq-answer">
-            We provide display replacement, battery replacement, software support, speaker and mic repair,
-            charging issues, camera issues, and general mobile service work.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Where is your shop located?</span>
-            <span>⌄</span>
-          </div>
-          <div class="faq-answer">
-            Add your full address here. I already attached the navigation button with your Google Maps link below.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Do you support all major brands?</span>
-            <span>⌄</span>
-          </div>
-          <div class="faq-answer">
-            Yes. Apple, Samsung, Vivo, Xiaomi, Realme, OnePlus, and many other common mobile brands can be handled.
-          </div>
+      <div class="section-head left">
+        <div>
+          <h2>Services Available</h2>
+          <p>Left-side heading kept as requested. Every option is placed inside its own horizontal glass card with icon-style logos. Click any one and the supported mobile brands show below.</p>
         </div>
       </div>
 
-      <div class="show-more-wrap">
-        <a href="#contact" class="show-more-btn">Show More</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle">Let customers reach your shop fast.</p>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Shop Details</h3>
-          <p><strong>Shop Name:</strong> Hanuman Mobiles & Service Center</p>
-          <p><strong>Phone:</strong> <a href="tel:+918074432996" style="color:#156eb1;">+91 8074432996</a></p>
-          <p><strong>WhatsApp:</strong> <a href="https://wa.me/918074432996" target="_blank" style="color:#156eb1;">Chat on WhatsApp</a></p>
-          <p><strong>Address:</strong> Add your full shop address here</p>
-          <p><strong>Email:</strong> <a href="mailto:hanumanmobiles@example.com" style="color:#156eb1;">hanumanmobiles@example.com</a></p>
-
-          <div class="action-group">
-            <button class="action-btn copy-btn" onclick="copyPhoneNumber()">📋 Copy Number</button>
-            <a class="action-btn call-btn" href="tel:+918074432996">📞 Call Now</a>
-            <a class="action-btn wa-btn" href="https://wa.me/918074432996" target="_blank">💬 WhatsApp</a>
-            <a class="action-btn review-btn" href="https://g.page/r/CUSTOM-REVIEW-LINK/review" target="_blank">⭐ Google Reviews</a>
-            <a class="action-btn map-btn" href="https://maps.app.goo.gl/sAuRLDQoN3YR7FkLA" target="_blank">📍 Navigate</a>
-          </div>
-
-          <div class="copy-status" id="copyStatus"></div>
+      <div class="services-row" id="servicesRow">
+        <div class="glass-card active">
+          <button class="service-btn" data-service="Screen">
+            <div class="service-icon">📱</div>
+            <div class="service-name">Screen</div>
+          </button>
         </div>
 
-        <div class="contact-card">
-          <h3>Opening Hours</h3>
-          <table class="hours-table">
-            <tr><td>Sunday</td><td>9:00 AM - 10:00 PM</td></tr>
-            <tr><td>Monday</td><td>9:00 AM - 10:00 PM</td></tr>
-            <tr><td>Tuesday</td><td>9:00 AM - 10:00 PM</td></tr>
-            <tr><td>Wednesday</td><td>9:00 AM - 10:00 PM</td></tr>
-            <tr><td>Thursday</td><td>9:00 AM - 10:00 PM</td></tr>
-            <tr><td>Friday</td><td>9:00 AM - 10:00 PM</td></tr>
-            <tr><td>Saturday</td><td>9:00 AM - 10:00 PM</td></tr>
-          </table>
+        <div class="glass-card">
+          <button class="service-btn" data-service="Battery">
+            <div class="service-icon">🔋</div>
+            <div class="service-name">Battery</div>
+          </button>
+        </div>
 
-          <iframe
-            class="map-frame"
-            src="https://www.google.com/maps?q=Hyderabad&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <div class="glass-card">
+          <button class="service-btn" data-service="Mic">
+            <div class="service-icon">🎤</div>
+            <div class="service-name">Mic</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Receiver">
+            <div class="service-icon">📞</div>
+            <div class="service-name">Receiver</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Charging Jack">
+            <div class="service-icon">🔌</div>
+            <div class="service-name">Charging Jack</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Speaker">
+            <div class="service-icon">🔊</div>
+            <div class="service-name">Speaker</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Back Panel">
+            <div class="service-icon">🧩</div>
+            <div class="service-name">Back Panel</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Proximity Sensor">
+            <div class="service-icon">📡</div>
+            <div class="service-name">Proximity Sensor</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Aux Jack">
+            <div class="service-icon">🎧</div>
+            <div class="service-name">Aux Jack</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Front Camera">
+            <div class="service-icon">🤳</div>
+            <div class="service-name">Front Camera</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Back Camera">
+            <div class="service-icon">📷</div>
+            <div class="service-name">Back Camera</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="LCD Screen">
+            <div class="service-icon">🖥️</div>
+            <div class="service-name">LCD Screen</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Motherboard Inspection">
+            <div class="service-icon">🛠️</div>
+            <div class="service-name">Motherboard Inspection</div>
+          </button>
+        </div>
+
+        <div class="glass-card">
+          <button class="service-btn" data-service="Mobile Cleaning">
+            <div class="service-icon">🧼</div>
+            <div class="service-name">Mobile Cleaning</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="brand-panel" id="brandPanel">
+        <div class="panel-top">
+          <div>
+            <h3 id="selectedServiceTitle">Screen Service</h3>
+            <p>Supported models and brands for the selected category.</p>
+          </div>
+        </div>
+
+        <div class="brand-grid" id="brandGrid"></div>
+
+        <div class="footer-note">
+          Current list includes: Apple, Samsung, Vivo, Redmi, Realme, Oppo, Honor, and OnePlus. This setup is clean, scalable, and easy to expand later with prices, model names, or repair timelines.
         </div>
       </div>
     </div>
   </section>
-
-  <footer>
-    © 2026 Hanuman Mobiles & Service Center. All rights reserved.
-  </footer>
-
-  <a href="https://wa.me/918074432996" class="floating-whatsapp" target="_blank" aria-label="WhatsApp">💬</a>
-  <a href="tel:+918074432996" class="floating-call" aria-label="Call">📞</a>
 
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    const faqItems = document.querySelectorAll('.faq-item');
+    const brands = ["Apple", "Samsung", "Vivo", "Redmi", "Realme", "Oppo", "Honor", "OnePlus"];
 
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
+    const buttons = document.querySelectorAll('.service-btn');
+    const cards = document.querySelectorAll('.glass-card');
+    const title = document.getElementById('selectedServiceTitle');
+    const brandGrid = document.getElementById('brandGrid');
 
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
-        item.classList.toggle('active');
+    function renderBrands(serviceName){
+      title.textContent = serviceName + ' Service';
+      brandGrid.innerHTML = brands.map(brand => `<div class="brand-chip">${brand}</div>`).join('');
+    }
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        cards.forEach(card => card.classList.remove('active'));
+        cards[index].classList.add('active');
+        renderBrands(button.dataset.service);
       });
     });
 
-    function copyPhoneNumber() {
-      const phoneNumber = '+91 8074432996';
-      const copyStatus = document.getElementById('copyStatus');
-
-      navigator.clipboard.writeText(phoneNumber)
-        .then(() => {
-          copyStatus.textContent = 'Mobile number copied successfully.';
-          setTimeout(() => {
-            copyStatus.textContent = '';
-          }, 2500);
-        })
-        .catch(() => {
-          copyStatus.textContent = 'Copy failed. Please copy manually.';
-          setTimeout(() => {
-            copyStatus.textContent = '';
-          }, 2500);
-        });
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'PrintScreen') {
-        e.preventDefault();
-        alert('Screenshot shortcut is discouraged on this website.');
-      }
-
-      if ((e.ctrlKey || e.metaKey) && ['c','u','s','p','a','x'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-      }
-
-      if (e.ctrlKey && e.shiftKey && ['i','j','c','s'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-      }
-
-      if (e.key === 'F12') {
-        e.preventDefault();
-      }
-    });
-
-    document.addEventListener('copy', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('cut', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('dragstart', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('selectstart', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
+    renderBrands('Screen');
   </script>
+  <section>
+    <div class="container">
+      <div class="section-head left">
+        <div>
+          <h2>Contact & Location</h2>
+          <p>If you need fast repair or service, reach out directly. Walk in, call, or message on WhatsApp.</p>
+        </div>
+      </div>
 
+      <div class="brand-panel">
+        <div class="brand-grid">
+          <div class="brand-chip">📍 Location<br><small>Hyderabad, Telangana</small></div>
+          <div class="brand-chip">📞 Phone<br><small>+91 XXXXX XXXXX</small></div>
+          <div class="brand-chip">💬 WhatsApp<br><small><a href="https://wa.me/91XXXXXXXXXX" target="_blank" style="color:#fde68a;text-decoration:none;">Chat on WhatsApp</a></small></div>
+          <div class="brand-chip">🕒 Working Hours<br><small>10:00 AM – 9:00 PM</small></div>
+        </div>
+
+        <div class="footer-note">
+          Hanuman Mobiles & Services Center — Screen replacement, battery change, motherboard inspection, and complete mobile repair services for all major brands.
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
